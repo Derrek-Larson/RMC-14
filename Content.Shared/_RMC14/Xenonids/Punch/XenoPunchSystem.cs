@@ -1,4 +1,5 @@
-﻿using Content.Shared.Coordinates;
+using Content.Shared._RMC14.Xenonids.Weeds;
+using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Effects;
 using Content.Shared.FixedPoint;
@@ -28,7 +29,7 @@ public sealed class XenoPunchSystem : EntitySystem
     private void OnXenoPunchAction(Entity<XenoPunchComponent> xeno, ref XenoPunchActionEvent args)
     {
         // TODO RMC14 xenos of the same hive
-        if (args.Target == xeno.Owner || HasComp<XenoComponent>(args.Target))
+        if (args.Target == xeno.Owner || HasComp<XenoComponent>(args.Target) || HasComp<XenoWeedsComponent>(args.Target))
             return;
 
         if (args.Handled)
